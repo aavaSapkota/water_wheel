@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   simple_shadow: ^0.2.0
   firebase_auth: ^3.0.1
+  firebase_remote_config: ^0.10.0+3
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:water_wheel/dataClasses/WaterSensor.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class WaterSensorManger extends StatefulWidget {
   const WaterSensorManger({Key? key}) : super(key: key);
@@ -11,14 +15,28 @@ class WaterSensorManger extends StatefulWidget {
 
 class _WaterSensorMangerState extends State<WaterSensorManger> {
 
-  List<WaterSensor> sensors = [
-    WaterSensor(1,"sink"), WaterSensor(2, "hose")
-  ];
-  int _selectedItemIndex = 1;
 
+   List<WaterSensor> sensors = [
+    WaterSensor("1","sink",204), WaterSensor("2", "hose",382)
+  ];
+
+  int _selectedItemIndex = 1;
+  Map data = {};
+
+  int sensorsLength(){
+    return sensors.length;
+  }
 
   @override
   Widget build(BuildContext context) {
+    DatabaseReference testRef = FirebaseDatabase.instance.reference().child("test");
+    // testRef
+    data={'data':ModalRoute.of(context)!.settings.arguments};
+    print(data);
+    setState(() {
+      if(data['data']!=null)sensors.add(WaterSensor(data['data']['id'],data['data']['name'],0));
+    });
+
 
     return Scaffold(
       body:SafeArea(
@@ -129,7 +147,7 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-
+          Navigator.pushReplacementNamed(context, '/addSensor');
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
@@ -138,7 +156,7 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
         children: [
           buildNavBarItem(Icons.home,0, '/home'),
           buildNavBarItem(Icons.view_list,1, '/waterSensorManager'),
-          buildNavBarItem(Icons.settings,2, '/userProfile'),
+          buildNavBarItem(Icons.settings,2, '/settings'),
         ],
       ),
     );
@@ -149,8 +167,11 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
       onTap: (){
         setState((){
           _selectedItemIndex = index;
+
         });
-        Navigator.pushNamed(context, route);
+        Navigator.popAndPushNamed(context, '/home',arguments:{
+          'length': sensors.length,
+        });
       }
       ,
       child: Container(

@@ -48,7 +48,7 @@ class _SettingsState extends State<Settings> {
           children: [
             buildNavBarItem(Icons.home,0, '/home'),
             buildNavBarItem(Icons.view_list,1, '/waterSensorManager'),
-            buildNavBarItem(Icons.settings,2, '/userProfile'),
+            buildNavBarItem(Icons.settings,2, '/settings'),
         ],
       ),
     );
@@ -88,7 +88,7 @@ class _SettingsState extends State<Settings> {
         setState((){
           _selectedItemIndex = index;
         });
-        Navigator.pushNamed(context, route);
+        Navigator.pushReplacementNamed(context, route);
       }
       ,
       child: Container(

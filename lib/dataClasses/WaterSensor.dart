@@ -1,25 +1,30 @@
 
 class WaterSensor {
   int waterused = 0;
-  int id =0;
+  String id ="0";
   String name ="";
 
 
-  WaterSensor(int id, String name){
-    waterused =0;
+  WaterSensor(String id, String name, int waterused){
+    this.waterused =waterused;
     this.id = id;
     this.name = name;
+
   }
 
   int getWaterused (){
     return waterused;
   }
 
-  int getId (){
+  String getId (){
     return id;
   }
 
   String getName(){
     return name;
+  }
+
+  void setWaterUsed(int water){
+    waterused+=water;
   }
 }

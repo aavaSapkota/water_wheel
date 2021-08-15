@@ -5,6 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:water_wheel/pages/WaterSensorManager.dart';
+
+
+
 
 
 class Home extends StatefulWidget{
@@ -15,16 +19,32 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home> {
-  DatabaseReference testRef = FirebaseDatabase.instance.reference().child("test");
+
+  void getData(){
+    //simulate network request for a username
+    Future.delayed(Duration(seconds: 3),(){
+
+    });
+  }
 
   // testRef.push().set("sd").toJson();
 
   _HomeState(){}
 
   int _selectedItemIndex = 0;
+  Map data = {};
+  int sensorNumber =2;
 
   @override
   Widget build(BuildContext context){
+
+    data={'data':ModalRoute.of(context)!.settings.arguments};
+    print(data);
+    setState(() {
+      if(data['data']!=null)sensorNumber=data['data']['length'].toInt();
+    });
+
+
     return Scaffold(
         body: SafeArea(
           child: Center(
@@ -84,7 +104,7 @@ class _HomeState extends State<Home> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children:[
                                         Text(
-                                          "1989",
+                                          "586",
                                           style: TextStyle(
                                             fontSize: 80.0,
                                             fontFamily: "MainTitleFont",
@@ -135,7 +155,7 @@ class _HomeState extends State<Home> {
                                             ),
                                             Align(
                                               child: Text(
-                                                '7',
+                                                '$sensorNumber',
                                                 style: TextStyle(
                                                   fontSize: 50,
                                                 ),
@@ -168,7 +188,7 @@ class _HomeState extends State<Home> {
                                             ),
                                             Align(
                                               child: Text(
-                                                "No Errors Detected",
+                                                "No Leaks Detected",
                                                 style: TextStyle(
                                                   fontSize: 10,
                                                 ),
@@ -197,7 +217,7 @@ class _HomeState extends State<Home> {
           children: [
             buildNavBarItem(Icons.home,0, '/home'),
             buildNavBarItem(Icons.view_list,1, '/waterSensorManager'),
-            buildNavBarItem(Icons.settings,2, '/userProfile'),
+            buildNavBarItem(Icons.settings,2, '/settings'),
           ],
         ),
 
@@ -214,7 +234,8 @@ class _HomeState extends State<Home> {
         setState((){
           _selectedItemIndex = index;
         });
-        Navigator.pushNamed(context, route);
+        if(index==_selectedItemIndex)
+          Navigator.pushReplacementNamed(context, route);
       }
       ,
       child: Container(
