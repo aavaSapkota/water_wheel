@@ -138,7 +138,7 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
         children: [
           buildNavBarItem(Icons.home,0, '/home'),
           buildNavBarItem(Icons.view_list,1, '/waterSensorManager'),
-          buildNavBarItem(Icons.perm_identity,2, '/userProfile'),
+          buildNavBarItem(Icons.settings,2, '/userProfile'),
         ],
       ),
     );

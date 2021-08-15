@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:water_wheel/dataClasses/WaterSensor.dart';
 
 import 'WaterSensor.dart';
@@ -8,6 +9,7 @@ class User {
   int id =0;
   String name ="";
   List<WaterSensor> sensors = [];
+  AssetImage pfp = new AssetImage(" ");
 
   User(int id, String name){
     this.id = id;
@@ -32,6 +34,10 @@ class User {
 
   void addWaterSensor(WaterSensor sensor){
     sensors.add(sensor);
+  }
+
+  void setPfp(AssetImage image){
+    pfp = image;
   }
 
 }

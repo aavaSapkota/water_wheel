@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95527226293",
+    "project_id": "water-wheel-7d2f5",
+    "storage_bucket": "water-wheel-7d2f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95527226293:android:75bfb83a39847c9b76e7fc",
+        "android_client_info": {
+          "package_name": "com.example.water_wheel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95527226293-jgek3qdtkd69pttd8cbc2rd7s5k5bmb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkCZDJdpYsN_ne--AW_lE1KN6RDdkZwTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95527226293-jgek3qdtkd69pttd8cbc2rd7s5k5bmb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
