@@ -17,15 +17,10 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
 
 
    List<WaterSensor> sensors = [
-    WaterSensor("1","sink",204), WaterSensor("2", "hose",382)
+    WaterSensor("1","shower",204), WaterSensor("2", "garden hose",382)
   ];
-
   int _selectedItemIndex = 1;
   Map data = {};
-
-  int sensorsLength(){
-    return sensors.length;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,6 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
     setState(() {
       if(data['data']!=null)sensors.add(WaterSensor(data['data']['id'],data['data']['name'],0));
     });
-
 
     return Scaffold(
       body:SafeArea(
@@ -167,11 +161,12 @@ class _WaterSensorMangerState extends State<WaterSensorManger> {
       onTap: (){
         setState((){
           _selectedItemIndex = index;
-
+          print(_selectedItemIndex);
         });
-        Navigator.popAndPushNamed(context, '/home',arguments:{
+        if(route=='/home')Navigator.popAndPushNamed(context, '/home',arguments:{
           'length': sensors.length,
         });
+        else Navigator.popAndPushNamed(context, route);
       }
       ,
       child: Container(

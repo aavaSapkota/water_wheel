@@ -74,7 +74,12 @@ class _SettingsState extends State<Settings> {
             Expanded(
               flex: 1,
               child: Container(
-                child: Icon(Icons.arrow_right),
+                child: GestureDetector(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/leakReport');
+                    },
+                    child: Icon(Icons.arrow_right)
+                ),
               ),
             ),
           ]

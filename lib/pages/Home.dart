@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_shadow/simple_shadow.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:water_wheel/pages/WaterSensorManager.dart';
-
-
-
-
 
 class Home extends StatefulWidget{
   @override
   _HomeState createState() => _HomeState();
-
 
 }
 
@@ -26,8 +16,6 @@ class _HomeState extends State<Home> {
 
     });
   }
-
-  // testRef.push().set("sd").toJson();
 
   _HomeState(){}
 
@@ -76,6 +64,7 @@ class _HomeState extends State<Home> {
                                       style: TextStyle(
                                         color: Colors.blue[900],
                                         fontSize: 30.0,
+                                        fontFamily: "MainTitleFont",
                                       ),
                                     ),
                                   ],
@@ -92,12 +81,12 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             Container(
-                                margin: EdgeInsets.all(10.0),
+                                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                                 child: Column(
                                   children: [
                                     Container(
                                       child: SvgPicture.asset("assets/waterdrop.svg"),
-                                      height: 50,
+                                      height: 30,
                                       width: 50,
                                     ),
                                     Row(
@@ -111,14 +100,17 @@ class _HomeState extends State<Home> {
                                           ),
                                           textAlign: TextAlign.center,
                                         ),
-                                        Text(
-                                          "liters",
-                                          style: TextStyle(
-                                            fontSize: 20.0,
-                                            fontFamily: "MainTitleFont",
-                                            color: Colors.blue[700],
+                                        Container(
+                                          padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                          child: Text(
+                                            "liters",
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontFamily: "MainTitleFont",
+                                              color: Colors.blue[700],
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                       ],
                                     ),
@@ -136,7 +128,7 @@ class _HomeState extends State<Home> {
                                     sigma: 7,
                                     child: Container(
                                       margin: EdgeInsets.all(10.0),
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsets.all(18.0),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(Radius.circular(10)),
                                         color: Colors.white,
@@ -178,7 +170,7 @@ class _HomeState extends State<Home> {
                                         borderRadius: BorderRadius.all(Radius.circular(10)),
                                         color: Colors.white,
                                       ),
-                                      margin: EdgeInsets.all(25.0),
+                                      margin: EdgeInsets.fromLTRB(25, 0, 25, 0),
                                       padding: EdgeInsets.all(20.0),
                                       child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -202,7 +194,31 @@ class _HomeState extends State<Home> {
                                 ),
                               ],
                             ),
-                            SvgPicture.asset("assets/WaterGraph.svg"),
+
+                            SimpleShadow(
+                              opacity: 0.6,
+                              color: Colors.grey,
+                              offset: Offset(-5,5),
+                              sigma: 7,
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    color: Colors.white,
+                                  ),
+                                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                  child: Center(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Today"),
+                                        SvgPicture.asset("assets/WaterGraphFinal.svg")
+                                      ],
+                                    ),
+                                  )
+
+                              ),
+                            ),
 
                           ],
                         ),
